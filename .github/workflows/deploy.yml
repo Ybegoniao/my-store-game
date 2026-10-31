@@ -1,0 +1,39 @@
+name: Deploy Flutter Web to GitHub Pages
+
+# 當有程式碼推送到 main 分支時，自動觸發這個腳本
+on:
+  push:
+    branches:
+      - main
+
+# 設定機器人需要的權限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 抓取你的最新程式碼
+      - uses: actions/checkout@v4
+      
+      # 2. 安裝 Flutter 環境
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          
+      # 3. 下載專案套件
+      - run: flutter pub get
+      
+      # 4. 編譯成 Web 版本 (注意：這裡的 --base-href 必須跟你的專案名稱完全一致，否則網頁會白畫面！)
+      - run: flutter build web --base-href /my-store-game/
+      
+      # 5. 上傳編譯好的檔案給 GitHub Pages
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/web
+          
+      # 6. 發布網頁
+      - uses: actions/deploy-pages@v4

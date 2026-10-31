@@ -1,17 +1,4 @@
-# mystore
+網頁：[https://Ybegoniao.github.io/my-store-game/](https://Ybegoniao.github.io/my-store-game/)
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+*圖片命名須規格化
+*已添加Action, 新push上來等待Action執行成功可直接使用上述網址查看網頁

@@ -289,8 +289,6 @@ class _MainMenuState extends State<MainMenu> {
 
                               widget.game.overlays.remove('MainMenu');
                               widget.game.overlays.add('FindGameEat');
-
-                              dispose();
                             },
                             child: Container(
                               width: 404,
@@ -343,8 +341,6 @@ class _MainMenuState extends State<MainMenu> {
                             onTap: () {
                               widget.game.overlays.remove('MainMenu');
                               widget.game.overlays.add('FindTutorialMenu'); 
-
-                              dispose();
                             },
                             child: Container(
                               width: 404,

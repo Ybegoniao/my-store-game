@@ -569,7 +569,6 @@ class _FindGameCookState extends State<FindGameCook> {
                               widget.game.generateNewOrder(); 
                               widget.game.overlays.remove('FindGameCook');
                               widget.game.overlays.add('FindGameEat'); 
-                              dispose();
                             },
                             child: Container(
                               width: 200,
@@ -626,7 +625,6 @@ class _FindGameCookState extends State<FindGameCook> {
                               widget.game.generateNewOrder(); 
                               widget.game.overlays.remove('FindGameCook');
                               widget.game.overlays.add('FindGameRelax'); 
-                              dispose();
                             },
                             child: Container(
                               width: 206,

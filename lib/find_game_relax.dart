@@ -537,7 +537,6 @@ class _FindGameRelaxState extends State<FindGameRelax> {
                               widget.game.generateNewOrder(); 
                               widget.game.overlays.remove('FindGameRelax');
                               widget.game.overlays.add('FindGameEat'); 
-                              dispose();
                             },
                             child: Container(
                               width: 340,

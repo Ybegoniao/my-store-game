@@ -278,7 +278,6 @@ class _FindGameEatState extends State<FindGameEat> {
                     onTap: () {
                       widget.game.overlays.remove('FindGameEat');
                       widget.game.overlays.add('FindGameMemorize'); 
-                      dispose();
                     },
                     child: Container(
                       width: 300,

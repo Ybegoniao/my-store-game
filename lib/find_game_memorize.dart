@@ -398,7 +398,6 @@ class _FindGameMemorizeState extends State<FindGameMemorize> {
                             onTap: () {
                               widget.game.overlays.remove('FindGameMemorize');
                               widget.game.overlays.add('FindGameCard');
-                              dispose();
                             },
                             child: Container(
                               width: 360,

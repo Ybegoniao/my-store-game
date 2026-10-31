@@ -15,11 +15,12 @@ class FindGameCard extends StatefulWidget {
 
 class _FindGameCardState extends State<FindGameCard> {
 
-  List<Ingredient> gridItems = []; 
-  int foundCount = 0; 
-  List<bool?> gridStatus = List.filled(9, null);
-  String currentFeedback = '';
-  bool? lastClickIsCorrect;
+  static String? _lastOrderName;
+  static List<Ingredient> gridItems = []; 
+  static int foundCount = 0; 
+  static List<bool?> gridStatus = [];
+  static String currentFeedback = '';
+  static bool? lastClickIsCorrect;
 
   int grandmaExpression = 0;
   int boyExpression = 0;
@@ -29,12 +30,17 @@ class _FindGameCardState extends State<FindGameCard> {
   @override
   void initState() {
     super.initState();
-    foundCount = 0;
-    gridStatus = List.filled(9, null);
-    currentFeedback = '';
-    lastClickIsCorrect = null;
-    
-    _generateGridItems();
+    final currentOrder = widget.game.currentOrder!;
+
+    if (_lastOrderName != currentOrder.name) {
+      _lastOrderName = currentOrder.name;
+      foundCount = 0;
+      gridStatus = List.filled(9, null);
+      currentFeedback = '';
+      lastClickIsCorrect = null;
+      
+      _generateGridItems();
+    }
 
     void scheduleGrandmaNext() {
       if (grandmaExpression == 5) {
@@ -117,11 +123,9 @@ class _FindGameCardState extends State<FindGameCard> {
             print("首次完成！解鎖新圖鑑！");
             widget.game.overlays.remove('FindGameCard');
             widget.game.overlays.add('FindRecipeFirstUnlock');
-            dispose();
           } else {
             widget.game.overlays.remove('FindGameCard');
             widget.game.overlays.add('FindGameCook');
-            dispose();
           }
         }
       } else {
@@ -715,7 +719,7 @@ class _FindGameCardState extends State<FindGameCard> {
                         ),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      shadows: [
+                      shadows: const [
                         BoxShadow(
                           color: Color(0x2D4A3222),
                           blurRadius: 18,
@@ -726,17 +730,14 @@ class _FindGameCardState extends State<FindGameCard> {
                     ),
                     child: Row(
                       children: [
-                        // 孫子的小頭像 (視需求可以加入 Image.asset)
-                        Positioned(
-                          left: 10,
-                          top: 7.06,
-                          child: Container(
-                            width: 96.72,
-                            height: 115.94,
-                            child: Image.asset(
-                              'lib/assets/images/boy_$boyExpression.png', 
-                              fit: BoxFit.contain,
-                            ),
+                        // 👇 關鍵修正：拔掉 Positioned，直接用 Container，並用 margin 替代 left 和 top
+                        Container(
+                          margin: const EdgeInsets.only(left: 10, top: 7, right: 15), 
+                          width: 96.72,
+                          height: 115.94,
+                          child: Image.asset(
+                            'lib/assets/images/boy_$boyExpression.png', 
+                            fit: BoxFit.contain,
                           ),
                         ),
                         Expanded(

@@ -388,7 +388,6 @@ class _FindGameFinishState extends State<FindGameFinish> {
                               
                               widget.game.overlays.remove('FindGameFinish');
                               widget.game.overlays.add('MainMenu');
-                              dispose();
                             },
                             child: Container(
                               width: 270,

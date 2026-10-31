@@ -213,7 +213,6 @@ class _FindSettingMenuState extends State<FindSettingMenu> {
                         child: GestureDetector(
                           onTap: () {
                             widget.game.overlays.remove('FindSettingMenu');
-                            dispose();
                           },
                           child: Container(
                             width: 584,
